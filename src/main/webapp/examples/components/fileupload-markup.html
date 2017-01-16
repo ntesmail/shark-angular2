@@ -1,0 +1,2 @@
+<h3>选中的文件是：{{file}}&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-sm btn-primary" (click)="startUpload(uploader);"><i class="icon-star"></i>开始上传</button></h3>
+<div class="btn btn-default" shark-fileupload #uploader="shark-fileupload" (selected)="onselected($event)" [autoupload]=true [url]="'/shark-angular2/xhr/file/upload.do'" [accept]="'image/jpg,image/jpeg,video/*'">请选择文件</div>

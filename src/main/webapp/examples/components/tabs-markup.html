@@ -1,0 +1,19 @@
+<p>当前激活的tab是：{{activeTab}}</p>
+<div shark-tabs #tabs [(model)]='activeTab' (tabChanged)="tabChanged($event);">
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="javascript:void(0);">新闻列表</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);">组织架构</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane">
+            1111
+        </div>
+        <div class="tab-pane">
+            222222
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+
+<h3>autocomplete的值：{{email}}</h3>
+<input class="form-control" shark-autocomplete [(ngModel)]="email" [filterData]="filterData" [debounceTime]=0 (selected)="onselected($event)" />

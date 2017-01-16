@@ -1,0 +1,6 @@
+/.tmp/*
+/build/*
+/aot/*
+/dist/*
+/npm-dist/*
+/node_modules/*

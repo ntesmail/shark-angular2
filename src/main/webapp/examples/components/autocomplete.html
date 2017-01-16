@@ -1,0 +1,18 @@
+<%
+    function includeMD(file) {
+        var text = include(file);
+        return converter.makeHtml(text).replace(/{/g, '&#123;').replace(/}/g, '&#125;');
+    }
+    function includeMDJs(file) {
+        var text = include(file);
+        return converter.makeHtml('```javascript\n' + text + '\n```');
+    }
+%>
+<h1 id="autocomplete">autocomplete 组件</h1>
+<div  class="explanation">
+<%- includeMD('autocomplete-api.html') %>
+</div>
+<div class="bs-example">
+<% include autocomplete-markup.html %>
+</div>
+<%- includeMDJs('autocomplete-markup.html') %>
