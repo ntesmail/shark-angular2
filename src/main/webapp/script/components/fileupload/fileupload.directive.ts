@@ -30,9 +30,9 @@ export class FileuploadDirective {
 
     render() {
         this.fileupload = this.elem.sharkFileupload({
-            autoupload: this.autoupload || false,
+            autoupload: typeof this.autoupload !== 'undefined' ? this.autoupload : this.sharkConfigService.fileupload.autoupload,
             accept: this.accept || this.sharkConfigService.fileupload.accept,
-            dragable: this.dragable || this.sharkConfigService.fileupload.dragable,
+            dragable: typeof this.dragable !== 'undefined' ? this.dragable : this.sharkConfigService.fileupload.dragable,
             url: this.url,
             onSelected: (file) => {
                 this.selectedEvent.emit({

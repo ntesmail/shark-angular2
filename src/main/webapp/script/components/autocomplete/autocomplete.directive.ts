@@ -24,8 +24,8 @@ export class AutocompleteDirective {
 
     render() {
         this.autoCompleteComponent = this.elem.sharkAutoComplete({
-            autocomplete: this.autocomplete || this.sharkConfigService.autocomplete.autocomplete,
-            debounceTime: this.debounceTime || this.sharkConfigService.autocomplete.debounceTime,
+            autocomplete: typeof this.autocomplete !== 'undefined' ? this.autocomplete : this.sharkConfigService.autocomplete.autocomplete,
+            debounceTime: typeof this.debounceTime !== 'undefined' ? this.debounceTime : this.sharkConfigService.autocomplete.debounceTime,
             displayKey: this.displayKey || this.sharkConfigService.autocomplete.displayKey,
             filterData: this.filterData,
             onSelected: (item) => {

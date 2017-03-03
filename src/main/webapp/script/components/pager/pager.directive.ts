@@ -30,7 +30,7 @@ export class PagerDirective {
             totalPages: this.totalPage,
             hl: this.hl || this.sharkConfigService.pager.hl,
             segmentSize: this.segmentSize || this.sharkConfigService.pager.segmentSize,
-            startFrom: this.startFrom || this.sharkConfigService.pager.startFrom,
+            startFrom: typeof this.startFrom !== 'undefined' ? this.startFrom : this.sharkConfigService.pager.startFrom,
             gopage: typeof this.gopage !== 'undefined' ? this.gopage : this.sharkConfigService.pager.gopage,
             onPageChanged: (page) => {
                 this.pageChangedEvent.emit({

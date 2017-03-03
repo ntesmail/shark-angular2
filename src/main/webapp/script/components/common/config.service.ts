@@ -13,6 +13,7 @@ export class SharkConfigService {
         displayKey: 'name'
     };
     fileupload = {
+        autoupload: false,
         accept: '',
         dragable: false
     }
