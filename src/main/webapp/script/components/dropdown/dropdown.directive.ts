@@ -6,9 +6,11 @@ import { SharkConfigService } from '../common/config.service';
     exportAs: 'shark-dropdown'
 })
 export class DropdownDirective {
-    @Output('selected') selectedEvent = new EventEmitter<any>();
+    @Output('onSelected') selectedEvent = new EventEmitter<any>();
     @Input('text') text: any;
     @Input('data') data: any;
+    @Input('actualKey') actualKey: any;
+    @Input('displayKey') displayKey: any;
     elem: any;
     dropdown: any;
 
@@ -21,13 +23,13 @@ export class DropdownDirective {
 
     render() {
         this.dropdown = $.fn.sharkDropdown({
-            actualKey: this.sharkConfigService.dropdown.actualKey,
-            displayKey: this.sharkConfigService.dropdown.displayKey,
+            actualKey: this.actualKey || this.sharkConfigService.dropdown.actualKey,
+            displayKey: this.displayKey || this.sharkConfigService.dropdown.displayKey,
             text: this.text,
             data: this.data,
             onSelected: (item) => {
                 this.selectedEvent.emit({
-                    type: 'selected',
+                    type: 'onSelected',
                     timestamp: Date.now(),
                     data: {
                         item: item
@@ -35,13 +37,15 @@ export class DropdownDirective {
                 });
             }
         });
-        this.elem.append(this.dropdown);
+        this.elem.append(this.dropdown.component);
     }
 
     ngOnChanges(v) {
         if (this.dropdown) {
-            this.dropdown.destroy();
-            this.render();
+            if (v.data || v.text) {
+                this.dropdown.destroy();
+                this.render();
+            }
         }
     }
 

@@ -6,9 +6,10 @@ import { SharkConfigService } from '../common/config.service';
     exportAs: 'shark-pager'
 })
 export class PagerDirective {
-    @Output('pageChanged') pageChangedEvent = new EventEmitter<any>();
+    @Output('onPageChanged') pageChangedEvent = new EventEmitter<any>();
+    @Input('currentPage') currentPage: number;
     @Input('totalPage') totalPage: number;
-    @Input('page') page: number;
+    @Input('hl') hl: Object;
     @Input('segmentSize') segmentSize: number;
     @Input('startFrom') startFrom: number;
     @Input('gopage') gopage: boolean;
@@ -25,14 +26,15 @@ export class PagerDirective {
 
     render() {
         this.pager = $.fn.sharkPager({
-            page: this.page,
+            page: this.currentPage,
             totalPages: this.totalPage,
+            hl: this.hl || this.sharkConfigService.pager.hl,
             segmentSize: this.segmentSize || this.sharkConfigService.pager.segmentSize,
             startFrom: this.startFrom || this.sharkConfigService.pager.startFrom,
             gopage: typeof this.gopage !== 'undefined' ? this.gopage : this.sharkConfigService.pager.gopage,
-            onWillChange: page => {
+            onPageChanged: (page) => {
                 this.pageChangedEvent.emit({
-                    type: 'pageChanged',
+                    type: 'onPageChanged',
                     timestamp: Date.now(),
                     data: {
                         page: page
@@ -40,12 +42,12 @@ export class PagerDirective {
                 });
             }
         });
-        this.elem.append(this.pager);
+        this.elem.append(this.pager.component);
     }
 
     ngOnChanges(v) {
         if (this.pager) {
-            this.pager.setPage(this.page, this.totalPage);
+            this.pager.setPage(this.currentPage, this.totalPage);
         }
     }
 

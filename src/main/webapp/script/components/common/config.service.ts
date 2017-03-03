@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class SharkConfigService {
     autocomplete = {
         debounceTime: 300,
-        autoFill: false,
+        autocomplete: false,
         displayKey: 'name'
     }
     dropdown = {
@@ -17,6 +17,13 @@ export class SharkConfigService {
         dragable: false
     }
     pager = {
+        hl: {
+            firstpage: '首页',
+            prevpage: '上一页',
+            nextpage: '下一页',
+            lastpage: '尾页',
+            gopage: '跳转'
+        },
         segmentSize: 5,
         startFrom: 1,
         gopage: true
@@ -27,6 +34,7 @@ export class SharkConfigService {
         direction: 'right',
     }
     selecter = {
+        activeStyle: null,
         actualKey: 'value',
         displayKey: 'name'
     }
@@ -34,7 +42,7 @@ export class SharkConfigService {
         direction: 'right',
     }
     tabs = {
-        active: 0,
+        initTab: 0,
     }
     tree = {
         checkable: false,

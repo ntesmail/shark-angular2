@@ -12,7 +12,7 @@ export class SelecterDirective {
     @Input('data') data: any;
     @Input('model') model: number;
     @Output('modelChange') modelChange = new EventEmitter<any>();
-    @Output('selected') selectedEvent = new EventEmitter<any>();
+    @Output('onSelected') selectedEvent = new EventEmitter<any>();
     elem: any;
     selecter: any;
 
@@ -25,14 +25,14 @@ export class SelecterDirective {
 
     render() {
         this.selecter = $.fn.sharkSelecter({
-            activeStyle: this.activeStyle,
+            activeStyle: this.activeStyle || this.sharkConfigService.selecter.activeStyle,
             actualKey: this.actualKey || this.sharkConfigService.selecter.actualKey,
             displayKey: this.displayKey || this.sharkConfigService.selecter.displayKey,
             data: this.data,
             onSelected: (value, item) => {
                 this.modelChange.emit(value);
                 this.selectedEvent.emit({
-                    type: 'selected',
+                    type: 'onSelected',
                     timestamp: Date.now(),
                     data: {
                         value: value,
@@ -41,9 +41,9 @@ export class SelecterDirective {
                 });
             }
         });
-        this.elem.append(this.selecter);
+        this.elem.append(this.selecter.component);
         if (typeof this.model !== 'undefined' && this.model !== null) {
-            this.selecter.setValue(this.model);
+            this.selecter.setValue(this.model, false);
         }
     }
 

@@ -1,5 +1,5 @@
 <p>当前激活的tab是：{{activeTab}}</p>
-<div shark-tabs #tabs [(model)]='activeTab' (tabChanged)="tabChanged($event);">
+<div shark-tabs [initTab]=1 (onTabSwitch)="onTabSwitch($event);">
     <ul class="nav nav-tabs">
         <li>
             <a href="javascript:void(0);">新闻列表</a>
@@ -10,7 +10,7 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane">
-            1111
+            111111
         </div>
         <div class="tab-pane">
             222222

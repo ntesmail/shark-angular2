@@ -1,1 +1,10 @@
-<div shark-pager #pager [page]="pagination.page" [totalPage]="pagination.totalPage" (pageChanged)="pageChanged($event,pager);" [segmentSize]=7 [gopage]=true></div>
+<div shark-pager 
+    [currentPage]="pagination.page" 
+    [totalPage]="pagination.totalPage" 
+    [gopage]=true
+    [hl]="hl"
+    [segmentSize]=7 
+    [startFrom]=1
+    (onPageChanged)="onPageChanged($event);" 
+>
+</div>

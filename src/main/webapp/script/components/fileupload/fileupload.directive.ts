@@ -6,14 +6,14 @@ import { SharkConfigService } from '../common/config.service';
     exportAs: 'shark-fileupload'
 })
 export class FileuploadDirective {
+    @Input('autoupload') autoupload: boolean;// 是否自动上传
     @Input('accept') accept: string;// 支持的文件类型
     @Input('dragable') dragable: boolean;// 是否支持拖拽
-    @Input('autoupload') autoupload: boolean;// 是否自动上传
-    @Input('url') url: boolean;// 是否自动上传
-    @Output('selected') selectedEvent = new EventEmitter<any>();
-    @Output('uploading') uploadingEvent = new EventEmitter<any>();
-    @Output('uploaded') uploadedEvent = new EventEmitter<any>();
-    @Output('failed') failedEvent = new EventEmitter<any>();
+    @Input('url') url: string;// 是否自动上传
+    @Output('onSelected') selectedEvent = new EventEmitter<any>();
+    @Output('onUploading') uploadingEvent = new EventEmitter<any>();
+    @Output('onUploaded') uploadedEvent = new EventEmitter<any>();
+    @Output('onFailed') failedEvent = new EventEmitter<any>();
     elem: any;
     fileupload: any;
 
@@ -30,9 +30,10 @@ export class FileuploadDirective {
 
     render() {
         this.fileupload = this.elem.sharkFileupload({
-            autoupload: false,
+            autoupload: this.autoupload || false,
             accept: this.accept || this.sharkConfigService.fileupload.accept,
             dragable: this.dragable || this.sharkConfigService.fileupload.dragable,
+            url: this.url,
             onSelected: (file) => {
                 this.selectedEvent.emit({
                     type: 'selected',

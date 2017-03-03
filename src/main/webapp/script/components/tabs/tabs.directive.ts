@@ -6,9 +6,8 @@ import { SharkConfigService } from '../common/config.service';
     exportAs: 'shark-tabs'
 })
 export class TabsDirective {
-    @Output('tabChanged') tabChangedEvent = new EventEmitter<any>();
-    @Input('model') active: number;
-    @Output('modelChange') activeChange = new EventEmitter<any>();
+    @Input('initTab') initTab: number;
+    @Output('onTabSwitch') tabChangedEvent = new EventEmitter<any>();
     elem: any;
     tabs: any;
     constructor(
@@ -22,12 +21,10 @@ export class TabsDirective {
 
     render() {
         this.tabs = this.elem.sharkTabs({
-            event: 'click',
-            active: typeof this.active !== 'undefined' ? this.active : this.sharkConfigService.tabs.active,
+            initTab: typeof this.initTab !== 'undefined' ? this.initTab : this.sharkConfigService.tabs.initTab,
             onTabSwitch: (index) => {
-                this.activeChange.emit(index);
                 this.tabChangedEvent.emit({
-                    type: 'tabChanged',
+                    type: 'onTabSwitch',
                     timestamp: Date.now(),
                     data: {
                         active: index
@@ -38,9 +35,6 @@ export class TabsDirective {
     }
 
     ngOnChanges(v) {
-        if (this.tabs) {
-            this.tabs.switchTo(this.active, false); //不触发回调
-        }
     }
 
     ngOnInit(){

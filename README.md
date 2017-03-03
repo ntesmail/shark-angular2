@@ -1,5 +1,5 @@
  
-#### 1) Install `ng2-bootstrap`
+#### 1) Install
 
 ```bash
 npm install shark-angular2 --save
@@ -22,13 +22,13 @@ import { SharkModule } from 'shark-angular2';
 
 #### 3) if you want to use [ngc] and [rollup], Edit rollup configuration (rollup-config.js)
 
-You have to use CommonJS rollup plugin, which you should be using anyway due to RxJS. If for some reason not, install it:
+You have to use CommonJS rollup plugin. 
 
 ```bash
 npm install rollup-plugin-commonjs --save --dev
 ```
 
-Then you have to import the CommonJS plugin, include it in the plugins array and add ng2-bootstrap to the list of modules:
+Then you have to import the CommonJS plugin, include it in the plugins array and add shark-angular2 to the list of modules:
 
 ```javascript
 ...
@@ -50,13 +50,4 @@ export default {
 		...
 	]
 }
-```
-
-at last, Run compilation the standard way
-
-e.g.
-
-```bash
-ngc -p tsconfig-aot.json
-rollup -c rollup-config.js
 ```

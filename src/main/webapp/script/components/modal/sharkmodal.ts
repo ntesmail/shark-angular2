@@ -80,7 +80,7 @@ export class SharkModal {
     selector: 'shark-modal-dialog',
     template: `
         <div class="modal fade">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-{{modalParams?.size}}">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button *ngIf="modalParams?.closeBtn" class="close" (click)="dismiss()">×</button>

@@ -1,2 +1,10 @@
-<p>selecter的值：{{value}}</p>
-<div shark-selecter #selecter [data]="data" [(model)]="value"></div>
+<p>下拉框的值：{{value}}</p>
+<div 
+    shark-selecter 
+    [data]="data" 
+    [actualKey]="'value'" 
+    [displayKey]="'name'" 
+    [(model)]="value" 
+    (onSelected)="onSelected($event)"
+>
+</div>

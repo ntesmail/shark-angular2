@@ -18,4 +18,8 @@ export class SelecterComponent {
             name: '二年级'
         }
     ];
+    onSelected(evt){
+        console.log(this.value);
+        console.log(evt);
+    }
 };

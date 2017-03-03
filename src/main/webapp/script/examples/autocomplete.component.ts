@@ -6,9 +6,7 @@ import { Component, ViewContainerRef } from '@angular/core';
 })
 export class AutocompleteComponent {
     email = '';
-    
     filterData(value, config) {
-        console.log(value);
         let arr = ['163.com', '126.com', 'vip.163.com', 'vip.126.com', 'gmail.com', 'vip.gmail.com', 'qq.com', 'yeah.net', 'sina.com'];
         var list = [];
         if (value.indexOf('@') > -1) {
@@ -30,8 +28,9 @@ export class AutocompleteComponent {
         return list;
     }
 
-    onselected(evt) {
-        console.log(evt.data.item);
+    onSelected(evt) {
+        console.log(this.email);
+        console.log(evt);
     }
 
 };

@@ -7,7 +7,7 @@ import { SharkConfigService } from '../common/config.service';
 })
 export class TooltipDirective {
     @Input('tooltipContent') tooltipContent: string;
-    @Input('tooltipDirection') tooltipDirection: string;
+    @Input('direction') direction: string;
     elem: any;
     tooltip: any;
     constructor(
@@ -20,11 +20,12 @@ export class TooltipDirective {
     }
 
     render() {
-        this.tooltip = this.elem.sharkTooltip({
+        this.tooltip = $.fn.sharkTooltip({
             event: 'mouseover',
-            direction: this.tooltipDirection || this.sharkConfigService.tooltip.direction,
+            direction: this.direction || this.sharkConfigService.tooltip.direction,
             content: this.tooltipContent
         });
+        this.tooltip.linkTo(this.elem);
     }
 
     ngOnChanges(v) {

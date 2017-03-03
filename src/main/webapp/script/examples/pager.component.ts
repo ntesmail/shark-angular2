@@ -6,11 +6,17 @@ import { Component } from '@angular/core';
 })
 export class PagerComponent {
     pagination= {
-        page: 1,
+        page: 10,
         totalPage: 100
     };
-
-    pageChanged(evt, pager) {
-        this.pagination.page = evt.data.page;
+    hl = {
+        firstpage: 'first',
+        prevpage: 'prev',
+        nextpage: 'next',
+        lastpage: 'last',
+        gopage: 'go'
+    };
+    onPageChanged(evt) {
+        console.log(evt);
     }
 };

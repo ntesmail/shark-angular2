@@ -6,13 +6,10 @@ import { SharkConfigService } from '../common/config.service';
     exportAs: 'shark-popover'
 })
 export class PopoverDirective {
-    @Output('show') showEvent = new EventEmitter<any>();
-    @Output('hide') hideEvent = new EventEmitter<any>();
     @Input('popoverTitle') popoverTitle: string;
     @Input('popoverContent') popoverContent: string;
-    @Input('popoverEvent') popoverEvent: string;
     @Input('popoverClose') popoverClose: string;
-    @Input('popoverDirection') popoverDirection: string;
+    @Input('direction') popoverDirection: string;
     elem: any;
     popover: any;
     constructor(
@@ -25,25 +22,14 @@ export class PopoverDirective {
     }
 
     render() {
-        this.popover = this.elem.sharkPopover({
-            event: this.popoverEvent || this.sharkConfigService.popover.event,
+        this.popover = $.fn.sharkPopover({
+            event: this.sharkConfigService.popover.event,
             close: this.popoverClose || this.sharkConfigService.popover.close,
             direction: this.popoverDirection || this.sharkConfigService.popover.direction,
             title: this.popoverTitle,
-            content: this.popoverContent,
-            onShow: () => {
-                this.showEvent.emit({
-                    type: 'show',
-                    timestamp: Date.now()
-                });
-            },
-            onHide: () => {
-                this.hideEvent.emit({
-                    type: 'hide',
-                    timestamp: Date.now()
-                });
-            }
+            content: this.popoverContent
         });
+        this.popover.linkTo(this.elem);
     }
 
     ngOnChanges(v) {

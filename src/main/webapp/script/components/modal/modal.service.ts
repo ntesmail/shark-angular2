@@ -42,6 +42,7 @@ export class SharkModalService {
         var params: any = {
             title: '提示',
             content: '',
+            size: '',
             okText: '确定',
             cancelText: '取消',
             closeBtn: true
@@ -59,6 +60,7 @@ export class SharkModalService {
         var params: any = {
             title: '提示',
             content: '',
+            size: '',
             okText: '确定',
             closeBtn: true
         };

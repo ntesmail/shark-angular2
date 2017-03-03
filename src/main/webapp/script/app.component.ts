@@ -1,4 +1,4 @@
-import { Component, Input, Renderer, ElementRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, Renderer, ElementRef, ViewContainerRef } from '@angular/core';
 import { SharkCommonService } from './components/index';
 import { Router } from '@angular/router';
 

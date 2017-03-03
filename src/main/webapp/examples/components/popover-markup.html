@@ -1,1 +1,9 @@
-<button class="btn btn-success" shark-popover [popoverTitle]="title" [popoverContent]="content" [popoverDirection]="'top'">点我</button>
+<button 
+    class="btn btn-success"
+    shark-popover 
+    [popoverTitle]="popoverConfig.title" 
+    [popoverContent]="popoverConfig.content" 
+    [popoverClose]="'bodyclick'"
+    [direction]="'right'"
+>点我
+</button>

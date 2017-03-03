@@ -37,7 +37,7 @@ export class EditArticleModal extends SharkModal {
         this.content = this.modalParams.content;
     }
     ok() {
-        this.close();
+        this.close({data:'click ok'});
     }
 };
 
@@ -53,12 +53,14 @@ export class ModalComponent {
 
     alert() {
         this.sharkModalService.alert({
+            size: '',
             content: '操作成功！'
         });
     }
 
     confirm() {
         this.sharkModalService.confirm({
+            size: 'lg',
             content: '确定保存吗？'
         }).then(() => {
             this.sharkToastrService.success('点击了确定！');
@@ -73,6 +75,7 @@ export class ModalComponent {
             component: EditArticleModal,
             params: { title: '曾内人', content: '禁门宫树月痕过，媚眼惟看宿鹭窠。斜拔玉钗灯影畔，剔开红焰救飞蛾。' }
         }).then((res: any) => {
+            console.log(res);
             this.sharkToastrService.success('点击了确定！');
         }, () => {
             this.sharkToastrService.error('点击了取消！');

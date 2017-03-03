@@ -8,23 +8,23 @@ import { Component, ViewContainerRef } from '@angular/core';
 export class FileuploadComponent {
     file: any;
 
-    onselected(evt) {
+    onSelected(evt) {
         this.file = evt.data.file.name;
     }
-    
+
+    onUploading(evt) {
+        console.log(evt);
+    }
+
+    onUploaded(evt) {
+        console.log(evt);
+    }
+
+    onFailed(evt) {
+        console.log(evt);
+    }
+
     startUpload(uploader) {
-        var promise = uploader.upload('/shark-angular2/xhr/file/upload.do', { userName: 'sweetyx' });
-        if(promise){
-            promise.progress(function (percent) {
-                console.log('上传进度：' + percent);
-            })
-            .then(function(res){
-                console.log(res);
-                alert('上传成功');
-            },function(error){
-                console.log(error);
-                alert('上传失败');
-            });
-        }
+        uploader.upload('/shark-angular2/xhr/file/upload.do', { userName: 'sweetyx' });
     }
 };
