@@ -1,13 +1,4 @@
-<div 
-    shark-tree 
-    #tree="shark-tree" 
-    [data]="treeData" 
-    [checkable]=true 
-    [autolink]=true 
-    [preExpand]=true 
-    [preSelects]="preSelectsNodes"
-    (onChecked)="onChecked($event);" 
-></div>
+<div shark-tree #tree="shark-tree" [data]="treeData" [checkable]=true [autolink]=true [preExpand]=true [preSelects]="preSelectsNodes" (onChecked)="onChecked($event);"></div>
 <button class="btn btn-default" (click)="checkAll();">全选</button>
 <button class="btn btn-default" (click)="reverseCheckAll();">反选</button>
 <button class="btn btn-default" (click)="checkNo();">不选</button>
