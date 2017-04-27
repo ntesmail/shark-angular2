@@ -127,7 +127,7 @@ gulp.task('serve-express', function (cb) {
         baseConf: config,
         gulp: gulp,
         webpack: {
-            replaceEntry: {
+            entry: {
                 'script/bootstrap': [path.join(__dirname, config.webapp, config.jsPath, 'bootstrap.ts'), 'webpack-hot-middleware/client']
             },
             module: {
