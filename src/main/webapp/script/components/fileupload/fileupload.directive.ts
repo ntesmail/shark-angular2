@@ -42,9 +42,6 @@ export class FileuploadDirective {
                         file: file
                     }
                 });
-                if (this.autoupload && this.url) {
-                    this.fileupload.upload(this.url);
-                }
             },
             onUploading: (file, percent) => {
                 this.uploadingEvent.emit({
